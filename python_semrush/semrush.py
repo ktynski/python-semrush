@@ -275,6 +275,30 @@ class SemrushClient(object):
             raise SemRushRegionalDatabaseError('%s - is not an accepted database.' % database)
         return self.produce('domain_organic_organic', domain=domain, database=database, **kwargs)
 
+    def domain_organic_unique(self, domain, database, **kwargs):
+        """
+        Competitors In Organic Search
+        This report lists a domain’s competitors in organic search results.
+
+        :param domain: The domain to query data for ie. 'example.com'
+        :param database: The database to query, one of the choices from REGIONAL_DATABASES
+
+        Optional kwargs
+        - display_limit: integer
+        - display_offset: integer
+        - export_escape: 1
+        - export_decode: 1 or 0
+        - display_date: date in format "YYYYMM15"
+        - export_columns: Dn, Cr, Np, Or, Ot, Oc, Ad
+        - display_sort: np_desc, cr_desc
+        """
+        if database not in REGIONAL_DATABASES.values():
+            raise SemRushRegionalDatabaseError('%s - is not an accepted database.' % database)
+        return self.produce('domain_organic_unique', domain=domain, database=database, **kwargs)
+    
+    
+    
+    
     def domain_adwords_adwords(self, domain, database, **kwargs):
         """
         Competitors In Paid Search
